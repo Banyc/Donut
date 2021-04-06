@@ -59,6 +59,10 @@ namespace Donut.Helpers
 
             double[] bitmap = new double[_settings.ScreenHeight * _settings.ScreenWidth];
             double[] depthBitmap = new double[_settings.ScreenHeight * _settings.ScreenWidth];
+            for (i = 0; i < bitmap.Length; i++)
+            {
+                bitmap[i] = double.MinValue;
+            }
             for (i = 0; i < depthBitmap.Length; i++)
             {
                 depthBitmap[i] = double.MaxValue;
@@ -114,7 +118,7 @@ namespace Donut.Helpers
                     }
                     int luminance = (int)(8 * luminanceMean + 0.5);
                     char pixel = ' ';
-                    if (luminance > 0)
+                    if (luminance >= 0)
                     {
                         pixel = _pixels[luminance];
                     }

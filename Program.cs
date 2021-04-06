@@ -8,6 +8,7 @@ namespace Donut
         static void Main(string[] args)
         {
             OutputToTerminal();
+            // OutputToFile();
         }
 
         static void OutputToTerminal()
