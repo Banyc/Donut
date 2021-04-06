@@ -30,7 +30,7 @@ namespace Donut
                         settings.B = bAngle;
                         var result = donut.GetAsciiDonut();
                         Console.WriteLine(result);
-                        int consoleTop = Console.CursorTop - settings.ScreenHeight / 2 - 1;
+                        int consoleTop = Console.CursorTop - settings.TerminalScreenHeight - 1;
                         if (consoleTop < 0)
                         {
                             // the console is too small in height.

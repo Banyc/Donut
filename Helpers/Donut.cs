@@ -14,6 +14,10 @@ namespace Donut.Helpers
         public double R2 { get; set; } = 2;
         public int ScreenWidth { get; set; } = 60;
         public int ScreenHeight { get; set; } = 40;
+        public int TerminalScreenHeight
+        {
+            get => this.ScreenHeight / 2;
+        }
         public double ThetaSpacing { get; set; } = 0.07;
         public double PhiSpacing { get; set; } = 0.02;
         // distance between eyes and screen
@@ -46,7 +50,7 @@ namespace Donut.Helpers
 
         public string GetAsciiDonut()
         {
-            char[] screenBitmap = new char[_settings.ScreenHeight / 2 * _settings.ScreenWidth];
+            char[] screenBitmap = new char[_settings.TerminalScreenHeight * _settings.ScreenWidth];
             int i;
             for (i = 0; i < screenBitmap.Length; i++)
             {
@@ -119,7 +123,7 @@ namespace Donut.Helpers
             }
 
             StringBuilder result = new();
-            for (i = 0; i < _settings.ScreenHeight / 2; i++)
+            for (i = 0; i < _settings.TerminalScreenHeight; i++)
             {
                 result.Append(screenBitmap[(i * _settings.ScreenWidth)..((i + 1) * _settings.ScreenWidth)]);
                 result.Append('\n');
