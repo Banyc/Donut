@@ -17,29 +17,26 @@ namespace Donut
             {
             };
             Donut.Helpers.Donut donut = new(settings);
-            double aAngle;
-            double bAngle;
-            double aAngleSpacing = 0.1;
-            double bAngleSpacing = 0.105;
+            double aAngle = 1;
+            double bAngle = 1;
+            double aAngleSpacing = 0.07;
+            double bAngleSpacing = 0.03;
             while (true)
             {
-                for (aAngle = 0; aAngle < 3.14 * 2; aAngle += aAngleSpacing)
+                settings.A = aAngle;
+                settings.B = bAngle;
+                var result = donut.GetAsciiDonut();
+                Console.WriteLine(result);
+                int consoleTop = Console.CursorTop - settings.TerminalScreenHeight - 1;
+                if (consoleTop < 0)
                 {
-                    for (bAngle = 0; bAngle < 3.14 * 2; bAngle += bAngleSpacing)
-                    {
-                        settings.A = aAngle;
-                        settings.B = bAngle;
-                        var result = donut.GetAsciiDonut();
-                        Console.WriteLine(result);
-                        int consoleTop = Console.CursorTop - settings.TerminalScreenHeight - 1;
-                        if (consoleTop < 0)
-                        {
-                            // the console is too small in height.
-                            consoleTop = Console.WindowHeight - 1;
-                        }
-                        Console.SetCursorPosition(0, consoleTop);
-                    }
+                    // the console is too small in height.
+                    consoleTop = Console.WindowHeight - 1;
                 }
+                Console.SetCursorPosition(0, consoleTop);
+
+                aAngle = aAngle + aAngleSpacing % (3.14 * 2);
+                bAngle = bAngle + bAngleSpacing % (3.14 * 2);
             }
         }
 

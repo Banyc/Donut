@@ -13,7 +13,7 @@ namespace Donut.Helpers
         // distance between y axis and the middle of the circle
         public double R2 { get; set; } = 2;
         public int ScreenWidth { get; set; } = 60;
-        public int ScreenHeight { get; set; } = 40;
+        public int ScreenHeight { get; set; } = 60;
         public int TerminalScreenHeight
         {
             get => this.ScreenHeight / 2;
